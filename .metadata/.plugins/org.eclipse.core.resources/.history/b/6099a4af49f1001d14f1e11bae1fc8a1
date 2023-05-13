@@ -1,0 +1,43 @@
+package com.example.contactmanagement.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.example.contactmanagement.dto.ContactRequest;
+import com.example.contactmanagement.dto.ContactResponse;
+import com.example.contactmanagement.entity.Contact;
+import com.example.contactmanagement.service.ContactService;
+
+class ContactControllerTest {
+	
+	@Autowired
+	private MockMvc mockMvc;
+	
+	@Mock
+	private ContactService contactService;
+	
+	private Contact contact;
+	private ContactRequest contactRequest;
+	private ContactResponse contactResponse;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		
+		
+		
+	}
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

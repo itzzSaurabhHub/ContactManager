@@ -1,0 +1,123 @@
+package com.example.contactmanagement.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.contactmanagement.dto.ContactRequest;
+import com.example.contactmanagement.dto.ContactResponse;
+import com.example.contactmanagement.entity.Contact;
+import com.example.contactmanagement.exceptions.ContactNotFoundException;
+import com.example.contactmanagement.repo.ContactRepository;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ContactServiceImpl implements ContactService{
+
+	private final ContactRepository contactRepository;
+	
+	@Override
+	public List<ContactResponse> getAllContacts() {
+		
+		List<Contact> contacts = contactRepository.findAll();
+		
+		return contacts.stream().map(contact -> mapToContactResponse(contact)).toList();
+	}
+
+	@Override
+	public ContactResponse getContactById(Long id) {
+		
+		Optional<Contact> contact = contactRepository.findById(id);
+		
+		if(contact.isPresent())
+			return mapToContactResponse(contact.get());
+		else
+			throw new ContactNotFoundException("No Contact Found for "+ id);
+	}
+
+	@Override
+	public List<ContactResponse> searchContactByFirstName(String firstName) {
+		
+		List<Contact> contacts = contactRepository.findByFirstNameContainingIgnoreCase(firstName);
+		
+		if(!contacts.isEmpty())
+			return contacts.stream().map(contact->mapToContactResponse(contact)).toList();
+		else
+			throw new ContactNotFoundException("No Contacts found with firstName as: "+firstName);
+		
+	}
+
+	@Override
+	public List<ContactResponse> searchContactByLastName(String lastName) {
+		
+		List<Contact> contacts = contactRepository.findByFirstNameContainingIgnoreCase(lastName);
+		
+		if(!contacts.isEmpty())
+			return contacts.stream().map(contact->mapToContactResponse(contact)).toList();
+		else
+			throw new ContactNotFoundException("No Contacts found with lastName as: "+lastName);
+	}
+
+	@Override
+	public List<ContactResponse> searchContactByEmail(String email) {
+		List<Contact> contacts = contactRepository.findByFirstNameContainingIgnoreCase(email);
+		
+		if(!contacts.isEmpty())
+			return contacts.stream().map(contact->mapToContactResponse(contact)).toList();
+		else
+			throw new ContactNotFoundException("No Contacts found with email as: "+email);
+	}
+
+	@Override
+	public ContactResponse createContact(ContactRequest request) {
+		
+		Contact contact = mapToContact(request);
+		
+		return mapToContactResponse(contactRepository.save(contact));
+		
+	}
+
+	@Override
+	public ContactResponse updateContact(Long id, ContactRequest request) {
+		
+		Optional<Contact> contact = contactRepository.findById(id);
+		
+		if(contact.isPresent())
+			Contact updatedContact = contactRepository.save(mapToContact(request));
+		
+		else
+			throw new ContactNotFoundException("Contact Not Found with id: "+id);
+		
+	}
+
+	@Override
+	public void deleteContact(Long id) {
+		
+		
+	}
+	
+	ContactResponse mapToContactResponse(Contact contact) {
+		return ContactResponse.builder()
+				.id(contact.getId())
+				.firstName(contact.getFirstName())
+				.lastName(contact.getLastName())
+				.email(contact.getEmail())
+				.phoneNumber(contact.getPhoneNumber())
+				.build();
+				
+	}
+	
+	private Contact mapToContact(ContactRequest request) {
+	
+		return Contact.builder()
+				.firstName(request.getFirstName())
+				.lastName(request.getLastName())
+				.email(request.getEmail())
+				.phoneNumber(request.getPhoneNumber())
+				.build();
+	}
+
+}

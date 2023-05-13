@@ -1,0 +1,15 @@
+package com.example.contactmanagement.repo;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.contactmanagement.entity.Contact;
+
+public interface ContactRepository extends JpaRepository<Contact, Long>{
+	
+	List<Contact> findByFirstNameContainingIgnoreCase(String firstName);
+	List<Contact> findByLastNameContainingIgnoreCase(String firstName);
+	List<Contact> findByEmailContainingIgnoreCase(String firstName);
+
+}

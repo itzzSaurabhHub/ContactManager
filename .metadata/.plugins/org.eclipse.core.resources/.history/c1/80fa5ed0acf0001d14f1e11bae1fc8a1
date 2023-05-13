@@ -1,0 +1,5 @@
+package com.example.contactmanagement.security;
+
+public class ContactSecurity {
+
+}

@@ -1,0 +1,11 @@
+package com.example.contactmanagement.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.contactmanagement.entity.Contact;
+
+public interface ContactRepository extends JpaRepository<Contact, Long>{
+	
+	
+
+}

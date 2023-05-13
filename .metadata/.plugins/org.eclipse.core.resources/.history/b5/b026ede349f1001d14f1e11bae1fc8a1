@@ -1,0 +1,60 @@
+package com.example.contactmanagement.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.example.contactmanagement.dto.ContactRequest;
+import com.example.contactmanagement.dto.ContactResponse;
+import com.example.contactmanagement.entity.Contact;
+import com.example.contactmanagement.service.ContactService;
+
+class ContactControllerTest {
+	
+	@Autowired
+	private MockMvc mockMvc;
+	
+	@Mock
+	private ContactService contactService;
+	
+	private ContactRequest contactRequest;
+	private ContactResponse contactResponse;
+	private List<ContactResponse> contactResponses;
+
+	@BeforeEach
+	void setUp() throws Exception {
+		
+		contactRequest = new ContactRequest();
+		contactRequest.setFirstName("Saurabh");
+		contactRequest.setLastName("Mishra");
+		contactRequest.setEmail("abcsaurabhxyz3@gmail.com");
+		contactRequest.setPhoneNumber("93271321");
+		
+		contactResponse = new ContactResponse();
+		contactResponse.setFirstName("Saurabh");
+		contactResponse.setLastName("Mishra");
+		contactResponse.setEmail("abcsaurabhxyz3@gmail.com");
+		contactResponse.setPhoneNumber("93271321");
+		
+		contactResponses = new ArrayList<>();
+		contactResponses.add(contactResponse);
+		
+		
+	}
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

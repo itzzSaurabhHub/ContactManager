@@ -1,0 +1,5 @@
+package com.example.contactmanagement.dto;
+
+public class ContactDTO {
+
+}

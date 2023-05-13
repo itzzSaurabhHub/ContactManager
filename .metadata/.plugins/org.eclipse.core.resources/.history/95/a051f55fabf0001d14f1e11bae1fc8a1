@@ -1,0 +1,27 @@
+package com.example.contactmanagement.exceptions;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class ContactExceptionHandler {
+	
+	@ExceptionHandler(ContactNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleContactNotFoundException(ContactNotFoundException ex)
+	{
+		ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage(), System.currentTimeMillis());
+		
+		return new ResponseEntity<ErrorResponse>(response, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(BadRequestException.class)
+	public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException ex)
+	{
+		ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage(), System.currentTimeMillis());
+		
+		return new ResponseEntity<ErrorResponse>(response, HttpStatus.BAD_REQUEST);
+	}
+}

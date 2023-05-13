@@ -1,0 +1,5 @@
+package com.example.contactmanagement.exceptions;
+
+public class BadRequestException {
+
+}
