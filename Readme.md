@@ -46,6 +46,30 @@ This is a simple RESTful API for managing contacts. Users can perform CRUD opera
 - [H2 Database](https://www.h2database.com/html/main.html) - In-memory database for development/testing
 - [Lombok](https://projectlombok.org/) - Boilerplate code reduction
 
+### Entity Classes
+
+- Created `Contact` entity class with `firstName`, `lastName`, `email`, `phoneNumber`
+
+### DTO Classes
+
+- Created separate `ContactRequest` and `ContactResponse` classes to map entities to DTOs
+
+### Repository Interface
+
+- Created `ContactRepository` interface that extends `JpaRepository<Contact, Long>`
+
+### Controller Class
+
+- Created `ContactController` class with the following endpoints:
+  - `GET /contact`: retrieves a list of all contacts
+  - `GET /contact/{id}`: retrieves a list of contact with id
+  - `GET /contact/firstName/{firstName}`: retrieves a list of contact with firstName
+  - `GET /contact/lastName/{lastName}`: retrieves a list of contact with lastName
+  - `GET /contact/email/{email}`: retrieves a list of contact with email
+  - `DELETE /contact/{id}`: Deletes the Contact with Id
+  - `PUT /contact/{id}`: Updates the Contact which matches with Id
+  - `POST /contact/`: creates a new contact.
+
 ## Authors
 
 - Your Name - [Kumar Saurabh Mishra](https://www.linkedin.com/in/saurabh751/)
