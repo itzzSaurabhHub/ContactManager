@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "f729ab74-4ce7-4e8c-a103-4c94f073a919",
+		"name": "ContactManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AddContact",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzAdmin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Saurabh\",\r\n    \"lastName\":\"Singh\",\r\n    \"email\":\"abc@dasasfa.com\",\r\n    \"phoneNumber\":\"213129\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/contact/",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						""
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "saurabh",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllContact",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzUser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/contact/",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetContactByID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzUser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/contact/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetContactByFirstName",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzUser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/contact/firstName/saurabh",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						"firstName",
+						"saurabh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetContactByLastName",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzUser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/contact/lastName/mishra",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						"lastName",
+						"mishra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetContactByEmail",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzUser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/contact/email/abc@nsj.com",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						"email",
+						"abc@nsj.com"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateContact",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzUser",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"Kailash\",\r\n    \"lastName\":\"Singh\",\r\n    \"email\":\"abc@bhys.com\",\r\n    \"phoneNumber\":\"12983\"\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8888/contact/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteContact",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "itzAdmin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8888/contact/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"contact",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
