@@ -6,10 +6,21 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 public class ContactSecurity extends WebSecurityConfigurerAdapter{
+	
+	public static final String[] API_DOCUMENTATION_URLs = {
+			
+			"/v3/api-docs",
+			"v2/api-docs",
+			"/swagger-resources/**",
+			"/swagger-ui/**",
+			"/webjars/**",		
+	};
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
@@ -20,6 +31,7 @@ public class ContactSecurity extends WebSecurityConfigurerAdapter{
 		.antMatchers(HttpMethod.POST,"/contact/**").hasRole("ADMIN")
 		.antMatchers(HttpMethod.PUT,"/contact/**").hasRole("ADMIN")
 		.antMatchers(HttpMethod.DELETE,"/contact/**").hasRole("ADMIN")
+		.antMatchers(API_DOCUMENTATION_URLs).permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.httpBasic()
