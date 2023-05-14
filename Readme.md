@@ -38,6 +38,11 @@ This is a simple RESTful API for managing contacts. Users can perform CRUD opera
 - The following users are available:
   - ADMIN username: ADMIN, password: itzAdmin
   - NORMAL username: User, password: itzUser
+  
+### Documentation
+
+- Wrote a README file to provide clear instructions on how to install, use, and contribute to the project.
+- Created Swagger API documentation for the project. You can access the documentation at [http://localhost:8888/swagger-ui/index.html](http://localhost:8888/swagger-ui/index.html) after starting the application. The Swagger documentation provides a detailed overview of all the endpoints in the API, along with sample request and response payloads.
 
 ## Built With
 
